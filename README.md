@@ -26,3 +26,5 @@ Score Screen?
 
 Leaderboard
   - Show a list of who has the best score
+
+![Wireframes](wireframe.png)
