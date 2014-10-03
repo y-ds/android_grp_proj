@@ -4,5 +4,9 @@
     <string name="app_name">MathSquares</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_instructions">InstructionsActivity</string>
+    <string name="operator_equals">=</string>
+    <string name="operator_default">+</string>
+    <string name="provided_default">2</string>
+    <string name="hint_default">1</string>
 
 </resources>

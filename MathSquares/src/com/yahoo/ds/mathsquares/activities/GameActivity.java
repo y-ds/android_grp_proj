@@ -1,7 +1,7 @@
 package com.yahoo.ds.mathsquares.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.parse.LogInCallback;
@@ -10,7 +10,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.yahoo.ds.mathsquares.R;
 
-public class GameActivity extends Activity {
+public class GameActivity extends FragmentActivity {
 	
     private static final String TAG = GameActivity.class.getName();
     private static String sUserId;
