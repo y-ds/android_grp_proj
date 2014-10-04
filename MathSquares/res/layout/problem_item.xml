@@ -29,21 +29,24 @@
 		        android:gravity="center"
 		        android:text="@string/problem_title"/>
 
-            <Button
-                android:id="@+id/button1"
+            <ImageView
+                android:id="@+id/cellExpander"
+                android:src="@drawable/ic_expand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
+                android:contentDescription="@string/empty_string"
                 android:text="@string/cell_header_button_text" />
 
             <CheckBox
                 android:id="@+id/checkBox1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/button1"
-                android:layout_alignBottom="@+id/button1"
-                android:layout_toLeftOf="@+id/button1"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:layout_alignBaseline="@+id/cellExpander"
+                android:layout_alignBottom="@+id/cellExpander"
+                android:layout_toLeftOf="@+id/cellExpander"
                 android:text="@string/empty_string" />
 	        
 	    </RelativeLayout>
@@ -471,5 +474,15 @@
 		        android:text="@string/provided_default"/>
 	    </RelativeLayout>
     </RelativeLayout>
+    
+    <Button
+        android:id="@+id/solveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/solve"/>
 
 </RelativeLayout>

@@ -11,14 +11,16 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int ic_collapse=0x7f020000;
+        public static final int ic_expand=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
         public static final int answer1=0x7f060007;
         public static final int answer2=0x7f06000b;
         public static final int answer3=0x7f060017;
         public static final int answer4=0x7f06001b;
-        public static final int button1=0x7f060004;
+        public static final int cellExpander=0x7f060004;
         public static final int cellHeader=0x7f060002;
         public static final int checkBox1=0x7f060005;
         public static final int gameListFragment=0x7f060000;
@@ -55,6 +57,7 @@ public final class R {
         public static final int provided2=0x7f06001f;
         public static final int provided3=0x7f060026;
         public static final int provided4=0x7f060029;
+        public static final int solveButton=0x7f06002a;
         public static final int tvProblemTitle=0x7f060003;
     }
     public static final class layout {
@@ -73,6 +76,7 @@ public final class R {
         public static final int operator_equals=0x7f040003;
         public static final int problem_title=0x7f040007;
         public static final int provided_default=0x7f040005;
+        public static final int solve=0x7f04000a;
         public static final int title_activity_instructions=0x7f040002;
     }
     public static final class style {

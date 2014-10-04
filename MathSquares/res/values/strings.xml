@@ -11,5 +11,6 @@
     <string name="problem_title">Problem Title</string>
     <string name="cell_header_button_text">Collapse</string>
     <string name="empty_string"></string>
+    <string name="solve">Solve</string>
 
 </resources>
