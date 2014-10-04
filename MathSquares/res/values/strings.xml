@@ -8,5 +8,8 @@
     <string name="operator_default">+</string>
     <string name="provided_default">2</string>
     <string name="hint_default">1</string>
+    <string name="problem_title">Problem Title</string>
+    <string name="cell_header_button_text">Collapse</string>
+    <string name="empty_string"></string>
 
 </resources>
