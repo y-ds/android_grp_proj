@@ -42,6 +42,7 @@ public class GameListFragment extends Fragment {
 	
 	public void getProblems() {
 		final ParseQuery<Problem> query = ParseQuery.getQuery("Problem");
+		query.orderByDescending("problem_date");
 		query.findInBackground(new FindCallback<Problem>() {
 		    public void done(List<Problem> newProblems, ParseException e) {
 		        if (e == null) {

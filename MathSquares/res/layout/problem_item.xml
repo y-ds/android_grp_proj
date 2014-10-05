@@ -40,9 +40,10 @@
                 android:text="@string/cell_header_button_text" />
 
             <CheckBox
-                android:id="@+id/checkBox1"
+                android:id="@+id/cbProblemCompleted"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
+                android:enabled="false"
                 android:gravity="center"
                 android:layout_alignBaseline="@+id/cellExpander"
                 android:layout_alignBottom="@+id/cellExpander"
@@ -479,10 +480,9 @@
         android:id="@+id/solveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_alignBottom="@+id/outerSquare51"
         android:text="@string/solve"/>
 
 </RelativeLayout>

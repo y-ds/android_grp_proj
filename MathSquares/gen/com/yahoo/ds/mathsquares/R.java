@@ -20,9 +20,9 @@ public final class R {
         public static final int answer2=0x7f06000b;
         public static final int answer3=0x7f060017;
         public static final int answer4=0x7f06001b;
+        public static final int cbProblemCompleted=0x7f060005;
         public static final int cellExpander=0x7f060004;
         public static final int cellHeader=0x7f060002;
-        public static final int checkBox1=0x7f060005;
         public static final int gameListFragment=0x7f060000;
         public static final int innerSquare15=0x7f06000e;
         public static final int innerSquare35=0x7f06001e;

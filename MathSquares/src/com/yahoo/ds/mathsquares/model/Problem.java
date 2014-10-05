@@ -1,6 +1,8 @@
 package com.yahoo.ds.mathsquares.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,7 +61,7 @@ public class Problem extends ParseObject {
 	}
 	
 	public JSONArray getAnswers() {
-		return getJSONArray("answers");
+		return getJSONArray("answer");
 	}
 	
 	public ArrayList<Integer> getAnswersList() {
@@ -75,5 +77,11 @@ public class Problem extends ParseObject {
 			Log.d("debug", "Unable to parse answer list for problem", e);
 		}
 		return res;
+	}
+	
+	public String getTitle() {
+		final Date date = getDate("problem_date");
+		final SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM dd yyyy");
+		return "" + sdf.format(date);
 	}
 }
