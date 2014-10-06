@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MathSquares</string>
+    <string name="app_name">Math Squares</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_instructions">InstructionsActivity</string>
+    <string name="title_activity_instructions">Instructions</string>
+    <string name="title_activity_leaderboard">Leaderboard</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="help">Help</string>
+    <string name="rules">Find the missing numbers that will complete and make the equations on all rows and columns.</string>
+    <string name="User">User1</string>
+    <string name="User1Score">120</string>
 
 </resources>

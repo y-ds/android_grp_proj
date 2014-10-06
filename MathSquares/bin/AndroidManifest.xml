@@ -30,6 +30,10 @@
             android:name="com.yahoo.ds.mathsquares.activities.InstructionsActivity"
             android:label="@string/title_activity_instructions" >
         </activity>
+        <activity
+            android:name="com.yahoo.ds.mathsquares.activities.LeaderboardActivity"
+            android:label="@string/title_activity_leaderboard"  >
+        </activity>
     </application>
 
 </manifest>
