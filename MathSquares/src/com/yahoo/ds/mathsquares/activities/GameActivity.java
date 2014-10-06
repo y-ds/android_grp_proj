@@ -1,8 +1,8 @@
 package com.yahoo.ds.mathsquares.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,8 +12,9 @@ import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.yahoo.ds.mathsquares.R;
+import com.yahoo.ds.mathsquares.fragments.GameListFragment;
 
-public class GameActivity extends Activity {
+public class GameActivity extends FragmentActivity {
 	
     private static final String TAG = GameActivity.class.getName();
     private static String sUserId;
@@ -25,20 +26,11 @@ public class GameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 		
-		if (ParseUser.getCurrentUser() != null) { // start with existing user
+		if (ParseUser.getCurrentUser() != null) {
             startWithCurrentUser();
-        } else { // If not logged in, login as a new anonymous user
+        } else {
             login();
         }
-	}
-	
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.settings, menu);
-        return true;
 	}
 	
 	
@@ -57,6 +49,12 @@ public class GameActivity extends Activity {
     	//Execute Intent startActivityForResults
     	startActivityForResult(i, INSTRUCTIONS_INTENT); 
 	}
+
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 	
 	private void startWithCurrentUser() {
         sUserId = ParseUser.getCurrentUser().getObjectId();		
@@ -69,9 +67,25 @@ public class GameActivity extends Activity {
                 if (e != null) {
                     Log.d(TAG, "Anonymous login failed.");
                 } else {
+                	Log.d(TAG, "Logged in with user " + sUserId);
                     startWithCurrentUser();
                 }
             }
        });		
+    }
+    
+    public void onFilter(MenuItem item) {
+    	final GameListFragment glf = (GameListFragment)getSupportFragmentManager().findFragmentById(R.id.gameListFragment);
+    	glf.filterProblems();
+    }
+    
+    public void onInstructions(MenuItem item) {
+    	final Intent intent = new Intent(this, InstructionsActivity.class);
+    	startActivity(intent);
+    }
+    
+    public void onLeaderboard(MenuItem item) {
+    	final Intent intent = new Intent(this, LeaderboardActivity.class);
+    	startActivity(intent);
     }
 }
