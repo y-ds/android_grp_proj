@@ -1,7 +1,14 @@
 package com.yahoo.ds.mathsquares.fragments;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +21,7 @@ import android.widget.ExpandableListView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.yahoo.ds.mathsquares.R;
 import com.yahoo.ds.mathsquares.adapters.ProblemListAdapter;
 import com.yahoo.ds.mathsquares.model.Problem;
@@ -21,13 +29,17 @@ import com.yahoo.ds.mathsquares.model.Problem;
 public class GameListFragment extends Fragment {
 
 	private List<Problem> problems;
+	private List<Problem> allProblems;
 	private ProblemListAdapter problemsAdapter;
 	private ExpandableListView lvProblems;
+	private boolean filterEnabled;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		filterEnabled = false;
 		problems = new ArrayList<Problem>();
+		allProblems = new ArrayList<Problem>();
 		problemsAdapter = new ProblemListAdapter(getActivity(), problems);
 		getProblems();
 	}
@@ -42,10 +54,12 @@ public class GameListFragment extends Fragment {
 	
 	public void getProblems() {
 		final ParseQuery<Problem> query = ParseQuery.getQuery("Problem");
+		query.whereLessThanOrEqualTo("problem_date", new Date());
 		query.orderByDescending("problem_date");
 		query.findInBackground(new FindCallback<Problem>() {
 		    public void done(List<Problem> newProblems, ParseException e) {
 		        if (e == null) {
+		        	allProblems.addAll(newProblems);
 		        	problemsAdapter.addAll(newProblems);
 		    		lvProblems.expandGroup(0);
 		        	problemsAdapter.notifyDataSetChanged();
@@ -54,5 +68,36 @@ public class GameListFragment extends Fragment {
 		        }
 		    }
 		});
+	}
+	
+	public void filterProblems() {
+		filterEnabled = !filterEnabled;
+		if (filterEnabled) {
+			final ParseUser user = ParseUser.getCurrentUser();
+			final JSONArray array = user.getJSONArray("completed_problems");
+			final Set<String> completedProblems = new HashSet<String>();
+			if (array != null) {
+				for (int i=0; i<array.length(); i++) {
+					try {
+						final JSONObject jo = (JSONObject)array.get(i);
+						final String str = jo.getString("objectId");
+						if (str != null) {
+							completedProblems.add(str);
+						}
+					} catch (JSONException e) {
+					}
+				}
+			}
+			problems.clear();
+			for (Problem p : allProblems) {
+				if (!completedProblems.contains(p.getObjectId())) {
+					problems.add(p);
+				}
+			}
+		} else {
+			problems.clear();
+			problems.addAll(allProblems);
+		}
+		problemsAdapter.notifyDataSetChanged();
 	}
 }

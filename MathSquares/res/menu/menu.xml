@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/miFilter"
+        android:icon="@drawable/ic_filter"
+        android:showAsAction="ifRoom"
+        android:onClick="onFilter"
+        android:title="@string/mi_filter"/>
+    <item
+        android:id="@+id/miInstructions"
+        android:icon="@drawable/ic_instructions"
+        android:showAsAction="ifRoom"
+        android:onClick="onInstructions"
+        android:title="@string/mi_instructions"/>
+</menu>

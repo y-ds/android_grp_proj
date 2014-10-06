@@ -60,49 +60,95 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 		tvPro4.setText(provided.get(3).toString());
 	}
 	
+	private void setupAnswers(Problem problem, View v, boolean completed) {
+		final List<Integer> answers = problem.getAnswersList();
+		
+		final EditText etAns1 = (EditText)v.findViewById(R.id.answer1);
+		final EditText etAns2 = (EditText)v.findViewById(R.id.answer2);
+		final EditText etAns3 = (EditText)v.findViewById(R.id.answer3);
+		final EditText etAns4 = (EditText)v.findViewById(R.id.answer4);
+		
+		if (completed) {
+			etAns1.setText(answers.get(0).toString());
+			etAns2.setText(answers.get(1).toString());
+			etAns3.setText(answers.get(2).toString());
+			etAns4.setText(answers.get(3).toString());
+			
+			etAns1.setEnabled(false);
+			etAns2.setEnabled(false);
+			etAns3.setEnabled(false);
+			etAns4.setEnabled(false);
+		} else {
+			etAns1.setText("");
+			etAns2.setText("");
+			etAns3.setText("");
+			etAns4.setText("");
+			
+			etAns1.setEnabled(true);
+			etAns2.setEnabled(true);
+			etAns3.setEnabled(true);
+			etAns4.setEnabled(true);
+		}
+	}
+	
 	private void setupSolveButton(final Problem problem, final View v) {
 		final ParseUser user = ParseUser.getCurrentUser();
 		final JSONArray completedProblems = user.getJSONArray("completed_problems");
 		final Button solveButton = (Button)v.findViewById(R.id.solveButton);
-		solveButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v2) {
-				if (correctAnswer(problem, v)) {
-					if (completedProblems == null) {
-						user.put("completed_problems", new JSONArray());
+		if (problemCompleted(problem)) {
+			solveButton.setText("Solved");
+			solveButton.setEnabled(false);
+		} else {
+			solveButton.setText("Solve");
+			solveButton.setEnabled(true);
+			solveButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v2) {
+					if (correctAnswer(problem, v)) {
+						if (completedProblems == null) {
+							user.put("completed_problems", new JSONArray());
+						}
+						final JSONArray cps = user.getJSONArray("completed_problems");
+						cps.put(problem);
+						user.saveInBackground();
+						notifyDataSetChanged();
 					}
-					final JSONArray cps = user.getJSONArray("completed_problems");
-					cps.put(problem);
-					user.saveInBackground();
 				}
-			}
-		});
+			});
+		}
 	}
 	
 	private void setupHeader(final Problem problem, final View v) {
 		final TextView tvProblemTitle = (TextView)v.findViewById(R.id.tvProblemTitle);
 		tvProblemTitle.setText(problem.getTitle());
 		
+		final CheckBox cbProblemCreated = (CheckBox)v.findViewById(R.id.cbProblemCompleted);
+		cbProblemCreated.setChecked(problemCompleted(problem));
+	}
+	
+	private boolean problemCompleted(Problem problem) {
 		final ParseUser user = ParseUser.getCurrentUser();
 		final JSONArray completedProblems = user.getJSONArray("completed_problems");
-		
-		boolean checked = false;
 		if (completedProblems != null) {
 			for (int i=0; i<completedProblems.length(); i++) {
 				try {
-					final JSONObject jObj = (JSONObject)completedProblems.get(i);
-					final Object idObj = jObj.get("objectId");
-					final String id = idObj == null ? null : idObj.toString();
+					String id = null;
+					if (completedProblems.get(i) instanceof JSONObject) {
+						final JSONObject jObj = (JSONObject)completedProblems.get(i);
+						final Object idObj = jObj.get("objectId");
+						id = idObj == null ? null : idObj.toString();
+					} else if (completedProblems.get(i) instanceof Problem) {
+						final Problem pr = (Problem)completedProblems.get(i);
+						id = pr.getObjectId();
+					}
 					if (problem.getObjectId().equals(id)) {
-						checked = true;
+						return true;
 					}
 				} catch (JSONException e) {
 				}
 			}
 		}
-		
-		final CheckBox cbProblemCreated = (CheckBox)v.findViewById(R.id.cbProblemCompleted);
-		cbProblemCreated.setChecked(checked);
+		return false;
 	}
 	
 	private boolean correctAnswer(Problem problem, View v) {
@@ -189,8 +235,10 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 		} else {
 			v = convertView;
 		}
+		final boolean completed = problemCompleted(problem);
 		setupOperators(problem, v);
 		setupProvided(problem, v);
+		setupAnswers(problem, v, completed);
 		setupSolveButton(problem, v);
 		return v;
 	}
