@@ -1,5 +1,6 @@
 package com.yahoo.ds.mathsquares.adapters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -11,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -21,29 +22,15 @@ import com.parse.ParseUser;
 import com.yahoo.ds.mathsquares.R;
 import com.yahoo.ds.mathsquares.model.Problem;
 
-public class ProblemListAdapter extends ArrayAdapter<Problem> {
+public class ProblemListAdapter extends BaseExpandableListAdapter {
 
+	private Context context;
+	private List<Problem> problems;
+	
 	public ProblemListAdapter(Context context, List<Problem> problems) {
-		super(context, 0, problems);
-	}
-
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		final Problem problem = getItem(position);
-		final View v;
-		if (convertView == null) {
-			final LayoutInflater inflater = LayoutInflater.from(getContext());
-			v = inflater.inflate(R.layout.problem_item, parent, false);
-		} else {
-			v = convertView;
-		}
-		
-		setupOperators(problem, v);
-		setupProvided(problem, v);
-		setupHeader(problem, v);
-		
-		return v;
-	}
+		this.context = context;
+		this.problems = problems;
+    }
 
 	private void setupOperators(Problem problem, View v) {
 		final List<String> operators = problem.getOperatorsList();
@@ -73,6 +60,25 @@ public class ProblemListAdapter extends ArrayAdapter<Problem> {
 		tvPro4.setText(provided.get(3).toString());
 	}
 	
+	private void setupSolveButton(final Problem problem, final View v) {
+		final ParseUser user = ParseUser.getCurrentUser();
+		final JSONArray completedProblems = user.getJSONArray("completed_problems");
+		final Button solveButton = (Button)v.findViewById(R.id.solveButton);
+		solveButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v2) {
+				if (correctAnswer(problem, v)) {
+					if (completedProblems == null) {
+						user.put("completed_problems", new JSONArray());
+					}
+					final JSONArray cps = user.getJSONArray("completed_problems");
+					cps.put(problem);
+					user.saveInBackground();
+				}
+			}
+		});
+	}
+	
 	private void setupHeader(final Problem problem, final View v) {
 		final TextView tvProblemTitle = (TextView)v.findViewById(R.id.tvProblemTitle);
 		tvProblemTitle.setText(problem.getTitle());
@@ -97,23 +103,6 @@ public class ProblemListAdapter extends ArrayAdapter<Problem> {
 		
 		final CheckBox cbProblemCreated = (CheckBox)v.findViewById(R.id.cbProblemCompleted);
 		cbProblemCreated.setChecked(checked);
-		
-		
-		final Button solveButton = (Button)v.findViewById(R.id.solveButton);
-		solveButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v2) {
-				if (correctAnswer(problem, v)) {
-					if (completedProblems == null) {
-						user.put("completed_problems", new JSONArray());
-					}
-					final JSONArray cps = user.getJSONArray("completed_problems");
-					cps.put(problem);
-					cbProblemCreated.setChecked(true);
-					user.saveInBackground();
-				}
-			}
-		});
 	}
 	
 	private boolean correctAnswer(Problem problem, View v) {
@@ -139,5 +128,82 @@ public class ProblemListAdapter extends ArrayAdapter<Problem> {
 		} catch (NumberFormatException e) {
 			return false;
 		}
+	}
+
+	@Override
+	public int getGroupCount() {
+		return problems.size();
+	}
+
+	@Override
+	public int getChildrenCount(int groupPosition) {
+		return 1;
+	}
+
+	@Override
+	public Object getGroup(int groupPosition) {
+		return problems.get(groupPosition);
+	}
+
+	@Override
+	public Object getChild(int groupPosition, int childPosition) {
+		return problems.get(groupPosition);
+	}
+
+	@Override
+	public long getGroupId(int groupPosition) {
+		return groupPosition;
+	}
+
+	@Override
+	public long getChildId(int groupPosition, int childPosition) {
+		return 1000000 + groupPosition;
+	}
+
+	@Override
+	public boolean hasStableIds() {
+		return true;
+	}
+
+	@Override
+	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+		final Problem problem = (Problem)getGroup(groupPosition);
+		final View v;
+		if (convertView == null) {
+			final LayoutInflater inflater = LayoutInflater.from(context);
+			v = inflater.inflate(R.layout.problem_header, parent, false);
+		} else {
+			v = convertView;
+		}
+		setupHeader(problem, v);
+		return v;
+	}
+
+	@Override
+	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+		final Problem problem = (Problem)getGroup(groupPosition);
+		final View v;
+		if (convertView == null) {
+			final LayoutInflater inflater = LayoutInflater.from(context);
+			v = inflater.inflate(R.layout.problem_item, parent, false);
+		} else {
+			v = convertView;
+		}
+		setupOperators(problem, v);
+		setupProvided(problem, v);
+		setupSolveButton(problem, v);
+		return v;
+	}
+
+	@Override
+	public boolean isChildSelectable(int groupPosition, int childPosition) {
+		return true;
+	}
+	
+	public void addAll(List<Problem> newProblems) {
+		if (problems == null) {
+			problems = new ArrayList<Problem>();
+		}
+		problems.addAll(newProblems);
 	}
 }

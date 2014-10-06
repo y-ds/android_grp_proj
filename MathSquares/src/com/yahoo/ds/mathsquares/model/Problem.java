@@ -81,7 +81,7 @@ public class Problem extends ParseObject {
 	
 	public String getTitle() {
 		final Date date = getDate("problem_date");
-		final SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM dd yyyy");
+		final SimpleDateFormat sdf = new SimpleDateFormat("EEE MMMM dd yyyy");
 		return "" + sdf.format(date);
 	}
 }

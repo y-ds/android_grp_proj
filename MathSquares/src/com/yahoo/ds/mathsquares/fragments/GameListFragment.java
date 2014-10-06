@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -22,7 +22,7 @@ public class GameListFragment extends Fragment {
 
 	private List<Problem> problems;
 	private ProblemListAdapter problemsAdapter;
-	private ListView lvProblems;
+	private ExpandableListView lvProblems;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class GameListFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.fragment_game_list, container, false);
-		lvProblems = (ListView)view.findViewById(R.id.lvProblems);
+		lvProblems = (ExpandableListView)view.findViewById(R.id.lvProblems);
 		lvProblems.setAdapter(problemsAdapter);
 		return view;
 	}
@@ -47,6 +47,8 @@ public class GameListFragment extends Fragment {
 		    public void done(List<Problem> newProblems, ParseException e) {
 		        if (e == null) {
 		        	problemsAdapter.addAll(newProblems);
+		    		lvProblems.expandGroup(0);
+		        	problemsAdapter.notifyDataSetChanged();
 		        } else {
 		            Log.d("problem", "Error: " + e.getMessage());
 		        }

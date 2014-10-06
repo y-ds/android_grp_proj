@@ -1,66 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
 
-    <RelativeLayout
-        android:id="@+id/cellHeader"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:background="#000000">
-        
-        <RelativeLayout
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:layout_margin="1dp"
-	        android:layout_alignParentTop="true"
-	        android:layout_alignParentLeft="true"
-	        android:layout_alignParentRight="true"
-	        android:background="#cccccc">
-	        
-            <TextView
-		        android:id="@+id/tvProblemTitle"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-        		android:layout_marginLeft="15dp"
-		        android:gravity="center"
-		        android:text="@string/problem_title"/>
-
-            <ImageView
-                android:id="@+id/cellExpander"
-                android:src="@drawable/ic_expand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:contentDescription="@string/empty_string"
-                android:text="@string/cell_header_button_text" />
-
-            <CheckBox
-                android:id="@+id/cbProblemCompleted"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:enabled="false"
-                android:gravity="center"
-                android:layout_alignBaseline="@+id/cellExpander"
-                android:layout_alignBottom="@+id/cellExpander"
-                android:layout_toLeftOf="@+id/cellExpander"
-                android:text="@string/empty_string" />
-	        
-	    </RelativeLayout>
-        
-        
-    </RelativeLayout>
-    
-    
     <RelativeLayout
         android:id="@+id/outerSquare11"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/cellHeader"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
@@ -84,7 +30,6 @@
         android:id="@+id/outerSquare12"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/cellHeader"
         android:layout_toRightOf="@+id/outerSquare11"
         android:layout_marginTop="15dp"
         android:background="#000000">
@@ -106,7 +51,6 @@
         android:id="@+id/outerSquare13"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/cellHeader"
         android:layout_toRightOf="@+id/outerSquare12"
         android:layout_marginTop="15dp"
         android:background="#000000">
@@ -129,7 +73,6 @@
         android:id="@+id/outerSquare14"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/cellHeader"
         android:layout_toRightOf="@+id/outerSquare13"
         android:layout_marginTop="15dp"
         android:background="#000000">
@@ -150,7 +93,6 @@
         android:id="@+id/outerSquare15"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/cellHeader"
         android:layout_toRightOf="@+id/outerSquare14"
         android:layout_marginTop="15dp"
         android:background="#000000">
