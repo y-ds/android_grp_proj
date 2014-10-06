@@ -18,6 +18,8 @@ public class GameActivity extends FragmentActivity {
 	
     private static final String TAG = GameActivity.class.getName();
     private static String sUserId;
+    private static final Integer INSTRUCTIONS_INTENT = 5;
+    private static final Integer LEADERBOARD_INTENT = 6;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,23 @@ public class GameActivity extends FragmentActivity {
         }
 	}
 	
+	
+	public void onSettingsLeaderboard(MenuItem mi)
+	{
+    	Intent i = new Intent(this, LeaderboardActivity.class);
+    	//Pass arguments
+    	//Execute Intent startActivityForResults
+    	startActivityForResult(i, LEADERBOARD_INTENT);
+	}
+	
+	public void onSettingsHelp(MenuItem mi)
+	{
+    	Intent i = new Intent(this, InstructionsActivity.class);
+    	//Pass arguments
+    	//Execute Intent startActivityForResults
+    	startActivityForResult(i, INSTRUCTIONS_INTENT); 
+	}
+
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -62,6 +81,11 @@ public class GameActivity extends FragmentActivity {
     
     public void onInstructions(MenuItem item) {
     	final Intent intent = new Intent(this, InstructionsActivity.class);
+    	startActivity(intent);
+    }
+    
+    public void onLeaderboard(MenuItem item) {
+    	final Intent intent = new Intent(this, LeaderboardActivity.class);
     	startActivity(intent);
     }
 }

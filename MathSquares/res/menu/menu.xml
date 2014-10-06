@@ -12,4 +12,11 @@
         android:showAsAction="ifRoom"
         android:onClick="onInstructions"
         android:title="@string/mi_instructions"/>
+    <item
+        android:id="@+id/miLeaderboard"
+        android:icon="@drawable/ic_launcher"
+        android:showAsAction="always"
+        android:onClick="onLeaderboard"
+        android:title="@string/mi_leaderboard">
+    </item>
 </menu>
