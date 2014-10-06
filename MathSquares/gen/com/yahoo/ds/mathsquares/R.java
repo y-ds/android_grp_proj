@@ -25,13 +25,14 @@ public final class R {
         public static final int cbProblemCompleted=0x7f070004;
         public static final int cellHeader=0x7f070002;
         public static final int gameListFragment=0x7f070000;
+        public static final int hintButton=0x7f07002a;
         public static final int innerSquare15=0x7f07000d;
         public static final int innerSquare35=0x7f07001d;
         public static final int innerSquare51=0x7f070024;
         public static final int innerSquare53=0x7f070027;
         public static final int lvProblems=0x7f070001;
-        public static final int miFilter=0x7f07002a;
-        public static final int miInstructions=0x7f07002b;
+        public static final int miFilter=0x7f07002b;
+        public static final int miInstructions=0x7f07002c;
         public static final int operator1=0x7f070008;
         public static final int operator2=0x7f070010;
         public static final int operator3=0x7f070013;
@@ -75,17 +76,18 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int btn_hint=0x7f04000b;
+        public static final int btn_solve=0x7f04000a;
         public static final int cell_header_button_text=0x7f040008;
         public static final int empty_string=0x7f040009;
         public static final int hello_world=0x7f040001;
         public static final int hint_default=0x7f040006;
-        public static final int mi_filter=0x7f04000b;
-        public static final int mi_instructions=0x7f04000c;
+        public static final int mi_filter=0x7f04000c;
+        public static final int mi_instructions=0x7f04000d;
         public static final int operator_default=0x7f040004;
         public static final int operator_equals=0x7f040003;
         public static final int problem_title=0x7f040007;
         public static final int provided_default=0x7f040005;
-        public static final int solve=0x7f04000a;
         public static final int title_activity_instructions=0x7f040002;
     }
     public static final class style {

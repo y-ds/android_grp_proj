@@ -425,6 +425,17 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
         android:layout_alignBottom="@+id/outerSquare51"
-        android:text="@string/solve"/>
+        android:text="@string/btn_solve"/>
+    
+    <Button
+        android:id="@+id/hintButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_above="@+id/solveButton"
+        android:paddingBottom="15dp"
+        android:layout_alignLeft="@+id/solveButton"
+        android:text="@string/btn_hint"/>
 
 </RelativeLayout>

@@ -11,7 +11,8 @@
     <string name="problem_title">Problem Title</string>
     <string name="cell_header_button_text">Collapse</string>
     <string name="empty_string"></string>
-    <string name="solve">Solve</string>
+    <string name="btn_solve">Solve</string>
+    <string name="btn_hint">Hint</string>
     <string name="mi_filter">Filter</string>
     <string name="mi_instructions">Instructions</string>
 
