@@ -5,24 +5,39 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvRules"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="@string/rules"
+        android:layout_marginBottom="10dp"
+       	android:layout_marginRight="10dp"
+       	android:layout_marginLeft="10dp"
         android:textSize="20sp" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/ivSampleBoard"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvRules"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvRulesExample"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_launcher" />
+        android:layout_marginRight="10dp"
+       	android:layout_marginLeft="10dp"
+        android:layout_below="@+id/ivSampleBoard"
+        android:text="For this board , \nLets start with the row 1, the missing number has to be 6.\nSimilarly Row 2 , the missing number has to be 2.\nREMEMBER to follow the order of operations. X and \ come before + and -"
+        android:textSize="15sp" />
 
 </RelativeLayout>
