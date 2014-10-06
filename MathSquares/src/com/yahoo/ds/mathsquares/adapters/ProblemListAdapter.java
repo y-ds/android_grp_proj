@@ -276,6 +276,7 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 						}
 						final JSONArray cps = user.getJSONArray("completed_problems");
 						cps.put(problem);
+						user.put("score", completedProblems.length());
 						user.saveInBackground();
 						notifyDataSetChanged();
 					}
