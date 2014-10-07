@@ -79,8 +79,17 @@ public class GameListFragment extends Fragment {
 			if (array != null) {
 				for (int i=0; i<array.length(); i++) {
 					try {
-						final JSONObject jo = (JSONObject)array.get(i);
-						final String str = jo.getString("objectId");
+						final Object obj = array.get(i);
+						final String str;
+						if (obj instanceof Problem) {
+							final Problem pr = (Problem)obj;
+							str = pr.getObjectId();
+						} else if (obj instanceof JSONObject) {
+							final JSONObject jo = (JSONObject)obj;
+							str = jo.getString("objectId");
+						} else {
+							str = null;
+						}
 						if (str != null) {
 							completedProblems.add(str);
 						}

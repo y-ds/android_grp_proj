@@ -18,12 +18,15 @@ public class GameActivity extends FragmentActivity {
 	
     private static final String TAG = GameActivity.class.getName();
     private static String sUserId;
+    
+    private boolean filterApplied;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 		
+		filterApplied = false;
 		if (ParseUser.getCurrentUser() != null) {
             startWithCurrentUser();
         } else {
@@ -58,6 +61,9 @@ public class GameActivity extends FragmentActivity {
     public void onFilter(MenuItem item) {
     	final GameListFragment glf = (GameListFragment)getSupportFragmentManager().findFragmentById(R.id.gameListFragment);
     	glf.filterProblems();
+    	
+    	filterApplied = !filterApplied;
+    	item.setIcon(filterApplied ? R.drawable.ic_filter_partial : R.drawable.ic_filter_full);
     }
     
     public void onInstructions(MenuItem item) {

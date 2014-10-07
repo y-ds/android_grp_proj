@@ -8,15 +8,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
@@ -96,7 +97,6 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 		setupProvided(problem, v);
 		setupAnswers(problem, v, completed);
 		setupSolveButton(problem, v);
-		setupHintButton(problem, v);
 		return v;
 	}
 	
@@ -205,6 +205,7 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 				et.setText("");
 				et.setEnabled(true);
 			}
+			et.setBackground(context.getResources().getDrawable(R.drawable.answer_square));
 		}
 	}
 
@@ -214,31 +215,6 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 		
 		final CheckBox cbProblemCreated = (CheckBox)v.findViewById(R.id.cbProblemCompleted);
 		cbProblemCreated.setChecked(problemCompleted(problem));
-	}
-
-	private void setupHintButton(final Problem problem, final View v) {
-		final Button hintButton = (Button)v.findViewById(R.id.hintButton);
-		if (problemCompleted(problem)) {
-			hintButton.setVisibility(View.INVISIBLE);
-			hintButton.setEnabled(false);
-		} else {
-			hintButton.setVisibility(View.VISIBLE);
-			hintButton.setEnabled(true);
-			hintButton.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v2) {
-					final List<EditText> ets = getAnswerEditTexts(v);
-					final List<Integer> answers = problem.getAnswersList();
-					final List<Integer> submittedAnswers = getSubmittedAnswers(v);
-
-					final int bgColorRed = Color.parseColor("#f42500");
-					final int bgColorGreen = Color.parseColor("#50d07f");
-					for (int i=0; i<ets.size(); i++) {
-						ets.get(i).setBackgroundColor(answers.get(i).equals(submittedAnswers.get(i)) ? bgColorGreen : bgColorRed);
-					}
-				}
-			});
-		}
 	}
 
 	private void setupOperators(Problem problem, View v) {
@@ -260,13 +236,15 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 	private void setupSolveButton(final Problem problem, final View v) {
 		final ParseUser user = ParseUser.getCurrentUser();
 		final JSONArray completedProblems = user.getJSONArray("completed_problems");
-		final Button solveButton = (Button)v.findViewById(R.id.solveButton);
+		final ImageView solveButton = (ImageView)v.findViewById(R.id.solveButton);
 		if (problemCompleted(problem)) {
-			solveButton.setText("Solved");
 			solveButton.setEnabled(false);
+			solveButton.setImageDrawable(context.getResources().getDrawable(R.drawable.happyface));
+			solveButton.setScaleType(ScaleType.FIT_CENTER);
 		} else {
-			solveButton.setText("Solve");
 			solveButton.setEnabled(true);
+			solveButton.setImageDrawable(context.getResources().getDrawable(R.drawable.submit));
+			solveButton.setScaleType(ScaleType.FIT_XY);
 			solveButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v2) {
@@ -279,6 +257,15 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 						user.put("score", completedProblems.length());
 						user.saveInBackground();
 						notifyDataSetChanged();
+					}
+					final List<EditText> ets = getAnswerEditTexts(v);
+					final List<Integer> answers = problem.getAnswersList();
+					final List<Integer> submittedAnswers = getSubmittedAnswers(v);
+					
+					final Drawable bgCorrect = context.getResources().getDrawable(R.drawable.answer_square_correct);
+					final Drawable bgIncorrect = context.getResources().getDrawable(R.drawable.answer_square_incorrect);
+					for (int i=0; i<ets.size(); i++) {
+						ets.get(i).setBackground(answers.get(i).equals(submittedAnswers.get(i)) ? bgCorrect : bgIncorrect);
 					}
 				}
 			});
