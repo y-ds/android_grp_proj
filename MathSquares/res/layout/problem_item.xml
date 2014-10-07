@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="#ECEAE0" >
 
     <RelativeLayout
         android:id="@+id/outerSquare11"
@@ -10,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
@@ -22,6 +23,8 @@
                 android:inputType="number"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:hint="@string/hint_default"/>
 	    </RelativeLayout>
@@ -32,17 +35,19 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare11"
         android:layout_marginTop="15dp"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:layout_marginLeft="1dp"
 	        android:layout_marginTop="1dp"
-	        android:background="#cccccc" >
+	        android:background="#d2e2e3" >
             <TextView
 		        android:id="@+id/operator1"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/operator_default"/>
 	    </RelativeLayout>
@@ -53,7 +58,7 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare12"
         android:layout_marginTop="15dp"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
@@ -65,6 +70,8 @@
                 android:inputType="number"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:hint="@string/hint_default"/>
 	    </RelativeLayout>
@@ -75,16 +82,18 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare13"
         android:layout_marginTop="15dp"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:layout_marginLeft="1dp"
 	        android:layout_marginTop="1dp"
-	        android:background="#cccccc" >
+	        android:background="#d2e2e3" >
             <TextView
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/operator_equals"/>
 	    </RelativeLayout>
@@ -95,7 +104,7 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare14"
         android:layout_marginTop="15dp"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
             android:id="@+id/innerSquare15"
 	        android:layout_width="48dp"
@@ -107,6 +116,8 @@
                 android:id="@+id/provided1"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/provided_default"/>
 	    </RelativeLayout>
@@ -120,17 +131,19 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/outerSquare11"
         android:layout_marginLeft="15dp"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:layout_marginLeft="1dp"
 	        android:layout_marginTop="1dp"
-	        android:background="#cccccc" >
+	        android:background="#d2e2e3" >
             <TextView
 		        android:id="@+id/operator2"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/operator_default"/>
 	    </RelativeLayout>
@@ -141,7 +154,7 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare11"
         android:layout_below="@+id/outerSquare11"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
@@ -156,17 +169,19 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare12"
         android:layout_below="@+id/outerSquare11"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:layout_marginLeft="1dp"
 	        android:layout_marginTop="1dp"
-	        android:background="#cccccc" >
+	        android:background="#d2e2e3" >
             <TextView
 		        android:id="@+id/operator3"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/operator_default"/>
 	    </RelativeLayout>
@@ -177,7 +192,7 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare13"
         android:layout_below="@+id/outerSquare11"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
@@ -195,7 +210,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:layout_below="@+id/outerSquare21"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
@@ -207,6 +222,8 @@
                 android:inputType="number"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:hint="@string/hint_default"/>
 	    </RelativeLayout>
@@ -217,17 +234,19 @@
         android:layout_height="50dp"
         android:layout_below="@+id/outerSquare21"
         android:layout_toRightOf="@+id/outerSquare11"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:layout_marginLeft="1dp"
 	        android:layout_marginTop="1dp"
-	        android:background="#cccccc" >
+	        android:background="#d2e2e3" >
             <TextView
 		        android:id="@+id/operator4"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/operator_default"/>
 	    </RelativeLayout>
@@ -238,7 +257,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/outerSquare21"
         android:layout_toRightOf="@+id/outerSquare12"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
@@ -250,6 +269,8 @@
                 android:inputType="number"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:hint="@string/hint_default"/>
 	    </RelativeLayout>
@@ -260,16 +281,18 @@
         android:layout_height="50dp"
         android:layout_below="@+id/outerSquare21"
         android:layout_toRightOf="@+id/outerSquare13"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:layout_marginLeft="1dp"
 	        android:layout_marginTop="1dp"
-	        android:background="#cccccc" >
+	        android:background="#d2e2e3" >
             <TextView
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/operator_equals"/>
 	    </RelativeLayout>
@@ -280,7 +303,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/outerSquare21"
         android:layout_toRightOf="@+id/outerSquare14"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
             android:id="@+id/innerSquare35"
 	        android:layout_width="48dp"
@@ -292,6 +315,8 @@
                 android:id="@+id/provided2"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/provided_default"/>
 	    </RelativeLayout>
@@ -305,16 +330,18 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/outerSquare31"
         android:layout_marginLeft="15dp"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:layout_marginLeft="1dp"
 	        android:layout_marginTop="1dp"
-	        android:background="#cccccc" >
+	        android:background="#d2e2e3" >
             <TextView
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/operator_equals"/>
 	    </RelativeLayout>
@@ -325,7 +352,7 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare11"
         android:layout_below="@+id/outerSquare31"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
@@ -340,16 +367,18 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare12"
         android:layout_below="@+id/outerSquare31"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:layout_marginLeft="1dp"
 	        android:layout_marginTop="1dp"
-	        android:background="#cccccc" >
+	        android:background="#d2e2e3" >
             <TextView
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/operator_equals"/>
 	    </RelativeLayout>
@@ -360,7 +389,7 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/outerSquare13"
         android:layout_below="@+id/outerSquare31"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
@@ -378,7 +407,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginBottom="15dp"
         android:layout_below="@+id/outerSquare41"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
             android:id="@+id/innerSquare51"
 	        android:layout_width="48dp"
@@ -390,6 +419,8 @@
                 android:id="@+id/provided3"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/provided_default"/>
 	    </RelativeLayout>
@@ -401,7 +432,7 @@
         android:layout_marginBottom="15dp"
         android:layout_below="@+id/outerSquare41"
         android:layout_toRightOf="@+id/outerSquare12"
-        android:background="#000000">
+        android:background="#222930">
         <RelativeLayout
             android:id="@+id/innerSquare53"
 	        android:layout_width="48dp"
@@ -413,6 +444,8 @@
                 android:id="@+id/provided4"
 		        android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
+		        android:textColor="#E9633B"
+		        android:textSize="22sp"
 		        android:gravity="center"
 		        android:text="@string/provided_default"/>
 	    </RelativeLayout>

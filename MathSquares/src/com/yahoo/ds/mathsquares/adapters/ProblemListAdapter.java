@@ -231,8 +231,8 @@ public class ProblemListAdapter extends BaseExpandableListAdapter {
 					final List<Integer> answers = problem.getAnswersList();
 					final List<Integer> submittedAnswers = getSubmittedAnswers(v);
 
-					final int bgColorRed = Color.parseColor("#bb0021");
-					final int bgColorGreen = Color.parseColor("#11cc00");
+					final int bgColorRed = Color.parseColor("#f42500");
+					final int bgColorGreen = Color.parseColor("#50d07f");
 					for (int i=0; i<ets.size(); i++) {
 						ets.get(i).setBackgroundColor(answers.get(i).equals(submittedAnswers.get(i)) ? bgColorGreen : bgColorRed);
 					}
